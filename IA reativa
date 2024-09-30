@@ -1,0 +1,67 @@
+import random
+
+alerta = [1,2,3]
+
+tamanho = 10
+
+ambiente = ["" for _ in range(tamanho)]
+
+def verificar_ambiente(ambiente):
+  print("Verificação do ambiente")
+  print("[", end="")
+  for i in range(tamanho):
+    if(i == tamanho-1):
+      print(ambiente[i], " ", end="")
+    else:
+      print(ambiente[i], " | ", end="")
+  print("]")
+verificar_ambiente(ambiente)
+
+def verificar_sujeira(qtd_sujeiras, alerta):
+  for i in qtd_sujeiras:
+    if (i >= 8):
+      print("O chão está muito sujo")
+      print(alerta[3])
+    elif (i >= 4 or i <= 7):
+      print("O chão deve ser limpo")
+      print(alerta[2])
+    else:
+      print("O chão não está sujo")
+      print(alerta[1])
+qtd_sujeiras = random.randint(1,10)
+print("Quantidade de sujeiras:", qtd_sujeiras)
+
+print("Verificação da posição das sujeiras")
+for i in range(qtd_sujeiras):
+  posicao_sujeira = random.randint(0,10)
+  print("Posição da sujeira:", posicao_sujeira)
+  ambiente[posicao_sujeira] = "~"
+
+verificar_ambiente(ambiente)
+
+pos_agente = random.randint(0,10)
+ambiente[pos_agente] = "A"
+
+verificar_ambiente(ambiente)
+
+def acoes_agente(ambiente, pos_agente):
+  ambiente[pos_agente] = ""
+  if(random.randint(0,1) == 0): #é uma movimentação para esquerda
+    if(pos_agente == 0): #Tenho que obrigar o agente a se movimentar para a direita
+      pos_agente = pos_agente + 1
+    else:
+      pos_agente = pos_agente - 1
+  else: #é uma movimentação para a direita
+    if(pos_agente == tamanho-1): #Tenho que obrigar o agente a se movimentar para a esquerda
+      pos_agente = pos_agente - 1
+    else:
+      pos_agente = pos_agente + 1
+
+
+  ambiente[pos_agente] = "A"
+  return pos_agente
+
+while(True):
+  input("Pressione Enter para continuar executando")
+  pos_agente = acoes_agente(ambiente, pos_agente)
+  verificar_ambiente(ambiente)
