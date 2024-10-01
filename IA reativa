@@ -19,12 +19,9 @@ verificar_ambiente(ambiente)
 
 def verificar_sujeira(qtd_sujeiras, alerta):
   for i in qtd_sujeiras:
-    if (i >= 8):
+    if (qtd_sujeiras > 8):
       print("O chão está muito sujo")
       print(alerta[3])
-    elif (i >= 4 or i <= 7):
-      print("O chão deve ser limpo")
-      print(alerta[2])
     else:
       print("O chão não está sujo")
       print(alerta[1])
@@ -34,6 +31,11 @@ print("Quantidade de sujeiras:", qtd_sujeiras)
 print("Verificação da posição das sujeiras")
 for i in range(qtd_sujeiras):
   posicao_sujeira = random.randint(0,10)
+  if posicao_sujeira < qtd_sujeiras:
+    print("O chão deve ser limpo")
+  else:
+    print("O chão não está sujo")
+    
   print("Posição da sujeira:", posicao_sujeira)
   ambiente[posicao_sujeira] = "~"
 
