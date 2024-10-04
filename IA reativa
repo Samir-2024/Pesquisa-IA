@@ -64,6 +64,5 @@ def acoes_agente(ambiente, pos_agente):
   return pos_agente
 
 while(True):
-  input("Pressione Enter para continuar executando")
   pos_agente = acoes_agente(ambiente, pos_agente)
   verificar_ambiente(ambiente)
