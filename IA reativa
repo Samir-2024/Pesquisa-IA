@@ -1,14 +1,12 @@
 import random
 
-tamanho = 10
-
-ambiente = ["" for _ in range(tamanho)]
+ambiente = ["" for _ in range(10)]
 
 def verificar_ambiente(ambiente):
   print("Verificação do ambiente")
   print("[", end="")
-  for i in range(tamanho):
-    if(i == tamanho-1):
+  for i in range(10):
+    if(i == 10 - 1):
       print(ambiente[i], " ", end="")
     else:
       print(ambiente[i], " | ", end="")
@@ -50,7 +48,7 @@ def acoes_agente(ambiente, pos_agente):
     else:
       pos_agente = pos_agente - 1
   else: #é uma movimentação para a direita
-    if(pos_agente == tamanho-1): #Tenho que obrigar o agente a se movimentar para a esquerda
+    if(pos_agente == 10 - 1): #Tenho que obrigar o agente a se movimentar para a esquerda
       pos_agente = pos_agente - 1
     else:
       pos_agente = pos_agente + 1
