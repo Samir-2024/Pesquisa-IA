@@ -1,7 +1,5 @@
 import random
 
-alerta = [1,2,3]
-
 tamanho = 10
 
 ambiente = ["" for _ in range(tamanho)]
@@ -21,10 +19,8 @@ def verificar_sujeira(qtd_sujeiras, alerta):
   for i in qtd_sujeiras:
     if (qtd_sujeiras > 8):
       print("O chão está muito sujo")
-      print(alerta[3])
     else:
       print("O chão não está sujo")
-      print(alerta[1])
 qtd_sujeiras = random.randint(1,10)
 print("Quantidade de sujeiras:", qtd_sujeiras)
 
@@ -58,7 +54,6 @@ def acoes_agente(ambiente, pos_agente):
       pos_agente = pos_agente - 1
     else:
       pos_agente = pos_agente + 1
-
 
   ambiente[pos_agente] = "A"
   return pos_agente
